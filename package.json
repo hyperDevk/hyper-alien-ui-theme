@@ -9,7 +9,7 @@
     "ui"
   ],
   "license": "MIT",
-  "repository": "https://github.com/atom/hyper-alien-ui-theme",
+  "repository": "https://github.com/hyperDevk/hyper-alien-ui-theme",
   "main": "lib/main",
   "engines": {
     "atom": ">0.40.0"
