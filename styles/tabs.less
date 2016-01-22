@@ -12,7 +12,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   border-radius: 0;
-
+  color:white;
 
   &::-webkit-scrollbar {
     display: none;
@@ -24,72 +24,33 @@
     top: 0;
     max-width: @tab-max-width;
     min-width: @tab-min-width;
-    height: @ui-tab-height;
     font-size: inherit;
-    color: @tab-text-color;
     line-height: @ui-tab-height;
     padding: 0;
     margin: 0;
-    background-clip: content-box;
+    -webkit-mask-position: -@modified-icon-width 0;
+    background: #bfd255; /* Old browsers */
+    background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 49%, #72aa00 53%, #9ecb2d 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
+    color:black;
 
-
-    &.active {
-      border-radius: @component-border-radius*1.75 @component-border-radius*1.75 0 0;
-      background-color: @tab-background-color-active;
-    }
-
-    // Cover ----------------------
-
-    &::after {
-      content: "";
-      z-index: 1;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: inherit;
-      border-radius: @component-border-radius @component-border-radius 0 0;
-      border: @tab-border;
-      border-bottom-color: @tab-background-color-active;
-      opacity: 0;
-      border:1px solid @light-green-alien;
-    }
-    &.active::after {
-      opacity: 1;
-      transition: none;
-    }
     // Title ----------------------
 
     .title {
-      position: relative;
-      height: inherit;
       text-align: center;
-      margin: 0 @tab-padding;
-      border-bottom: @tab-border-size solid transparent;
-      text-overflow: clip;
-      // To use a mask and keep sub-pixel AA: Also add an opaque bg + HWA layer
-      -webkit-mask: linear-gradient( to left, hsla(0,0%,0%,0), hsla(0,0%,0%,1) 1em) no-repeat;
-      background-color: @tab-background-color;
-      background-clip: content-box;
-      backface-visibility: hidden;
-      color:@light-green-alien;
+      margin: 0 2px 0 2px;
+      color:white;
+      border:1px solid white;
     }
+    //tab active
     &:hover .title {
-      -webkit-mask-position: -@modified-icon-width 0;
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bfd255+0,8eb92a+49,72aa00+53,9ecb2d+100 */
-      background: #bfd255; /* Old browsers */
-      background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 49%, #72aa00 53%, #9ecb2d 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
-
-
+      font-size: 15px;
     }
     &.active .title {
       background-color: @tab-background-color-active;
     }
-
-
     // Close icon ----------------------
 
     .close-icon {
@@ -102,8 +63,9 @@
       text-align: center;
       transform: scale(0);
       transition: transform .08s;
+      color:black;
       &:hover {
-        opacity: .7;
+        opacity: 1;
       }
       &:active {
         opacity: .4;
@@ -136,22 +98,10 @@
       padding: 0;
     }
   }
-
-
-  // Active ----------------------
-
-  .tab.active {
-    color: @tab-text-color-active;
-  }
-
   // Tab seperator ----------------------
 
   .tab {
     border-width: 0 0 0 1px;
-    border-image: linear-gradient(@tab-bar-background-color, @base-border-color 1em) 0 0 0 1 stretch;
-    &:first-child {
-      border-width: 0;
-    }
   }
   .tab.active,
   .tab.active + .tab {
@@ -220,58 +170,20 @@
   }
 }
 
+//create a thin border around the workspace
+atom-pane.active{
+  background-color:@light-green-alien;
+  padding:10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
 
-// Active pane marker --------------
-
-.tab-bar .tab::before {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 2;
-  top: @tab-border-size;
-  left: @tab-border-size;
-  bottom: @tab-border-size;
-  width:20px;
-  border-top-left-radius: inherit;
-  border-radius: @component-border-radius 0;
-  opacity: 0;
-  transition: opacity .16s;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bfd255+0,8eb92a+49,72aa00+53,9ecb2d+100 */
+  // Active ----------------------
+.tab.active{
+  //background-color: #9ecb2d;
   background: #9ecb2d; /* Old browsers */
   background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 49%, #72aa00 53%, #9ecb2d 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
-
-
-  .theme-one-light-ui & {
-    left: 0;
-  }
-}
-
-atom-pane.active .tab.active:before {
-  opacity: 1;
-  transition-duration: .32s;
-}
-
-
-// Custom tabs --------------
-
-.tab-bar .tab.active {
-  &[data-type$="Editor"],
-  &[data-type="MarkdownPreviewView"] {
-    color: @tab-text-color-editor;
-    background-color: @tab-background-color-editor;
-    &::after {
-      border-bottom-color: @tab-background-color-editor;
-    }
-    .title {
-      color: black;
-      background: #9ecb2d; /* Old browsers */
-      background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 49%, #72aa00 53%, #9ecb2d 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 49%,#72aa00 53%,#9ecb2d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
-    }
-  }
 }

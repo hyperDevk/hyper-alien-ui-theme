@@ -2,7 +2,7 @@
 
 .tree-view {
   font-size: @ui-size;
-  background: black;
+  background: @black-deep-alien;
 
   .project-root.project-root {
     &:first-child {
@@ -11,28 +11,33 @@
     &:before {
       height: @ui-tab-height;
       background-clip: padding-box;
+      color:white;
     }
     & > .header .name {
       line-height: @ui-tab-height;
+      color:@light-green-alien;
     }
   }
 
   .selected:before {
     background: @light-green-alien;
   }
+  //selector name row
+  /*
+  .selected .name{
+    color:@black-deep-alien;
+  }
+  */
 
 }
 
 .selected:after {
-  color:black;
+  color:@black-deep-alien;
 }
 
 
 .theme-one-dark-ui .tree-view .project-root.project-root::before {
-  border-top: 1px solid transparent;
-  background-clip: padding-box;
-
-
+  border-top: 10px solid transparent;
 }
 
 .tree-view-resizer {
@@ -54,7 +59,7 @@
 .list-group .selected::before,
 .list-tree .selected::before {
   height: @tree-view-height;
-  color: black;
+  color: @black-deep-alien;
 }
 
 // icon
@@ -84,11 +89,21 @@
   background: @base-accent-color;
   opacity: 0;
   transition: opacity .16s;
-
 }
 
 .tree-view:focus::before {
   opacity: 1;
   transition-duration: .32s;
+}
 
+//color for list items in the tree
+.name.icon.icon-file-text::before{
+  color:white;
+}
+//name of the project
+.header.list-item::before{
+  color:@light-green-alien;
+}
+.file.entry.list-item.status-modified.selected{
+  color:black;
 }
