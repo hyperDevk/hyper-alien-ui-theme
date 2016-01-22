@@ -1,0 +1,20 @@
+{
+  "name": "hyper-alien-ui-theme",
+  "theme": "ui",
+  "version": "1.1.9",
+  "description": "theme ui  hyper alien based in one dark theme",
+  "keywords": [
+    "dark",
+    "adaptive",
+    "ui"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/atom/one-dark-ui",
+  "main": "lib/main",
+  "engines": {
+    "atom": ">0.40.0"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.9.7"
+  }
+}
