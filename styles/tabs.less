@@ -5,6 +5,7 @@
 @tab-padding: @ui-padding/1.5;
 @modified-icon-width: @ui-size;
 
+
 .tab-bar {
   height: @ui-tab-height;
   box-shadow: inset 0 -1px 0 @tab-border-color;
@@ -131,9 +132,7 @@
       }
     }
   }
-
-
-  // Dragging ---------------------- no mostrar el icono de cerrar al mover una pestana
+  // Dragging  dont show close icon when drag
 
   .tab.is-dragging {
     opacity: .6;
@@ -168,6 +167,14 @@
       }
     }
   }
+}
+
+.tab-bar::after {
+  content: "HYPER ALIEN THEME";
+  color:@light-green-alien;
+  font-size:26px;
+  font-family: fantasy;
+  padding:0px 10px 0px 10px;
 }
 
 //create a thin border around the workspace
